@@ -1,0 +1,69 @@
+{
+  "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "ClockSpeed": 1.0,
+  "ViewMode": "SpringArmChase",
+  "Vehicles": {
+    "drone_0": {
+      "VehicleType": "SimpleFlight",
+      "X": 0, "Y": 0, "Z": -2,
+      "Sensors": {
+        "Lidar1": {
+          "SensorType": 6,
+          "Enabled": true,
+          "NumberOfChannels": 64,
+          "Range": 100,
+          "PointsPerSecond": 100000,
+          "RotationsPerSecond": 10,
+          "VerticalFOVUpper": 15,
+          "VerticalFOVLower": -25
+        },
+        "Camera1": {
+          "SensorType": 1,
+          "Enabled": true,
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 640,
+              "Height": 480,
+              "FOV_Degrees": 90
+            }
+          ]
+        }
+      }
+    },
+    "drone_1": {
+      "VehicleType": "SimpleFlight",
+      "X": 10, "Y": 0, "Z": -2,
+      "Sensors": {
+        "Lidar1": {
+          "SensorType": 6,
+          "Enabled": true,
+          "NumberOfChannels": 64,
+          "Range": 100,
+          "PointsPerSecond": 100000,
+          "RotationsPerSecond": 10,
+          "VerticalFOVUpper": 15,
+          "VerticalFOVLower": -25
+        }
+      }
+    },
+    "drone_2": {
+      "VehicleType": "SimpleFlight",
+      "X": 0, "Y": 10, "Z": -2,
+      "Sensors": {
+        "Lidar1": {
+          "SensorType": 6,
+          "Enabled": true,
+          "NumberOfChannels": 64,
+          "Range": 100,
+          "PointsPerSecond": 100000,
+          "RotationsPerSecond": 10,
+          "VerticalFOVUpper": 15,
+          "VerticalFOVLower": -25
+        }
+      }
+    }
+  }
+}
