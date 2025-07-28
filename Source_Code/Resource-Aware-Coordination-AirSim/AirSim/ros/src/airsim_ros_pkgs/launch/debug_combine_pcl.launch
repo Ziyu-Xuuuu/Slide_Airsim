@@ -1,5 +1,0 @@
-<launch>
-  <!-- Launch the combine_pcls node -->
-  <node name="combine_pcls_node" pkg="airsim_ros_pkgs" type="combine_pcls" output="screen">
-  </node>
-</launch>

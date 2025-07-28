@@ -1,5 +1,0 @@
-Header header
-ROSCylinder[] treeModels
-sensor_msgs/PointCloud2 treeFeatures
-sensor_msgs/PointCloud2 groundFeatures
-geometry_msgs/PoseWithCovarianceStamped t_map_anchor
