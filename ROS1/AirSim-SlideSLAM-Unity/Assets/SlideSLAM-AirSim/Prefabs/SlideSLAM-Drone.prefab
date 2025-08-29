@@ -1,0 +1,64 @@
+# Unity Prefab Configuration for SlideSLAM-Enhanced Drone
+# This prefab extends the existing AirSim Drone with SlideSLAM capabilities
+
+# Prefab Structure:
+# SlideSLAM-Drone (Root)
+#   ├── Drone (AirSim Component) - inherited from existing QuadCopter.prefab
+#   ├── SlideSLAMVehicleExtension (Script)
+#   ├── LiDAR_Mount
+#   │   └── LiDAR_Visualization (Optional)
+#   ├── CaptureCameras (inherited from AirSim)
+#   │   ├── Camera_0 (DataCaptureScript)
+#   │   ├── Camera_1 (DataCaptureScript) 
+#   │   └── DepthCamera (DataCaptureScript)
+#   └── Sensors
+#       ├── IMU
+#       ├── GPS
+#       └── Barometer
+
+# Component Configuration:
+# - Inherits all AirSim Drone functionality
+# - Adds SlideSLAMVehicleExtension component
+# - Configures ROS topics according to existing bridge
+# - Maintains compatibility with existing coordination system
+
+# Required Components:
+# 1. Drone (from AirSim)
+# 2. SlideSLAMVehicleExtension
+# 3. SlideSLAMROSInterface
+# 4. DataCaptureScript (existing)
+# 5. Vehicle (base class, existing)
+
+# Default Settings:
+robotNamespace: "drone_0"
+rosMasterURI: "http://localhost:11311"
+enableSLOAM: true
+enableObjectDetection: true
+enableSemanticMapping: true
+replaceDefaultPerception: false  # Keep AirSim perception as backup
+
+# LiDAR Configuration:
+lidarRange: 100.0
+lidarRayCount: 32
+lidarLayerMask: -1
+
+# Camera Configuration (uses existing AirSim cameras):
+# - Camera_0: RGB front camera
+# - Camera_1: Depth camera (if available)
+# - Additional cameras as configured in AirSim settings
+
+# ROS Topics (following existing airsim_ros_pkgs pattern):
+# Input:
+#   /{robotNamespace}/airsim_node/lidar/Lidar
+#   /{robotNamespace}/airsim_node/camera_0/Scene
+#   /{robotNamespace}/airsim_node/odom_local_ned
+# 
+# SlideSLAM Bridge:
+#   /{robotNamespace}/velodyne_points
+#   /{robotNamespace}/sync_odom
+#   /{robotNamespace}/semantic_observation
+#
+# Output:
+#   /{robotNamespace}/sloam/optimized_odom
+#   /{robotNamespace}/slam_pose
+#   /{robotNamespace}/object_detections

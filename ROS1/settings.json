@@ -1,0 +1,132 @@
+{
+    "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
+    "SettingsVersion": 1.2,
+    "SimMode": "Multirotor",
+    "ClockSpeed": 1,
+    "ViewMode": "SpringArmChase",
+    "Vehicles": {
+        "Drone1": {
+            "VehicleType": "SimpleFlight",
+            "DefaultVehicleState": "Armed",
+            "AutoCreate": true,
+            "EnableCollisionPassthrough": false,
+            "EnableCollisions": true,
+            "AllowAPIAlways": true,
+            "RC": {
+                "RemoteControlID": 0,
+                "AllowAPIWhenDisconnected": false
+            },
+            "Sensors": {
+                "Imu": {
+                    "SensorType": 2,
+                    "Enabled": true
+                },
+                "Lidar1": {
+                    "SensorType": 6,
+                    "Enabled": true,
+                    "NumberOfChannels": 64,
+                    "Range": 100,
+                    "PointsPerSecond": 100000,
+                    "RotationsPerSecond": 10,
+                    "VerticalFOVUpper": 15,
+                    "VerticalFOVLower": -25
+                }
+            },
+            "Cameras": {
+                "front_center": {
+                    "CaptureSettings": [
+                        {
+                            "ImageType": 0,
+                            "Width": 640,
+                            "Height": 480,
+                            "FOV_Degrees": 90
+                        }
+                    ]
+                }
+            },
+            "X": -2, "Y": 0.5, "Z": -2, "Yaw": 0
+        },
+        "Drone2": {
+            "VehicleType": "SimpleFlight",
+            "DefaultVehicleState": "Armed",
+            "AutoCreate": true,
+            "EnableCollisionPassthrough": false,
+            "EnableCollisions": true,
+            "AllowAPIAlways": true,
+            "RC": {
+                "RemoteControlID": 0,
+                "AllowAPIWhenDisconnected": false
+            },
+            "Sensors": {
+                "Imu": {
+                    "SensorType": 2,
+                    "Enabled": true
+                },
+                "Lidar1": {
+                    "SensorType": 6,
+                    "Enabled": true,
+                    "NumberOfChannels": 64,
+                    "Range": 100,
+                    "PointsPerSecond": 100000,
+                    "RotationsPerSecond": 10,
+                    "VerticalFOVUpper": 15,
+                    "VerticalFOVLower": -25
+                }
+            },
+            "Cameras": {
+                "front_center": {
+                    "CaptureSettings": [
+                        {
+                            "ImageType": 0,
+                            "Width": 640,
+                            "Height": 480,
+                            "FOV_Degrees": 90
+                        }
+                    ]
+                }
+            },
+            "X": 2, "Y": 0.5, "Z": -2, "Yaw": 0
+        },
+        "Drone3": {
+            "VehicleType": "SimpleFlight",
+            "DefaultVehicleState": "Armed",
+            "AutoCreate": true,
+            "EnableCollisionPassthrough": false,
+            "EnableCollisions": true,
+            "AllowAPIAlways": true,
+            "RC": {
+                "RemoteControlID": 0,
+                "AllowAPIWhenDisconnected": false
+            },
+            "Sensors": {
+                "Imu": {
+                    "SensorType": 2,
+                    "Enabled": true
+                },
+                "Lidar1": {
+                    "SensorType": 6,
+                    "Enabled": true,
+                    "NumberOfChannels": 64,
+                    "Range": 100,
+                    "PointsPerSecond": 100000,
+                    "RotationsPerSecond": 10,
+                    "VerticalFOVUpper": 15,
+                    "VerticalFOVLower": -25
+                }
+            },
+            "Cameras": {
+                "front_center": {
+                    "CaptureSettings": [
+                        {
+                            "ImageType": 0,
+                            "Width": 640,
+                            "Height": 480,
+                            "FOV_Degrees": 90
+                        }
+                    ]
+                }
+            },
+            "X": 6, "Y": 0.5, "Z": -2, "Yaw": 0
+        }
+    }
+}
