@@ -1,0 +1,48 @@
+# AirSim ROS Node Settings for 6-Drone Configuration
+# These parameters match the settings used in airsim_node_6quadrotors.launch
+
+# Connection settings
+host_ip: "localhost"
+
+# Frame IDs
+world_frame_id: "world"
+odom_frame_id: "odom"
+
+# Coordinate system
+coordinate_system_enu: true
+
+# Update rates (seconds) - optimized for 6-drone setup
+update_airsim_control_every_n_sec: 0.005
+update_airsim_img_response_every_n_sec: 0.001
+update_lidar_every_n_sec: 0.1
+update_imu_n_sec: 0.01
+
+# Publishing options
+publish_clock: false
+is_vulkan: true
+
+# Drone names for 6-drone setup
+drone_names:
+  - "Drone1"
+  - "Drone2" 
+  - "Drone3"
+  - "Drone4"
+  - "Drone5"
+  - "Drone6"
+
+# Sensor settings
+enable_lidar: true
+enable_camera: true
+enable_imu: true
+enable_rgbd: true
+
+# Frame settings for multi-drone
+base_frame_suffix: "/base_link"
+odom_frame_suffix: "/odom"
+map_frame: "map"
+
+# Topic remapping for coordination
+coordination_topics:
+  slam_pose_output: "/slam_pose"
+  camera_output: "/camera/image_raw"
+  camera_info_output: "/camera/camera_info"

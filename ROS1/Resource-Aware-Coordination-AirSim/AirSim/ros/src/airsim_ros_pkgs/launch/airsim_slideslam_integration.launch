@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- AirSim ROS Integration with SlideSLAM -->
+    <!-- Arguments -->
+    <arg name="host" default="localhost"/>
+    <arg name="num_drones" default="6"/>
+    <arg name="use_lidar" default="true"/>
+    <arg name="use_rgbd" default="true"/>
+    
+    <!-- Static transforms for coordinate frame alignment -->
+    <node pkg="tf" type="static_transform_publisher" name="world_to_map_broadcaster" 
+          args="0 0 0 0 0 0 /world /map 100"/>
+    
+    <!-- AirSim nodes for each drone -->
+    <group ns="drone_0">
+        <node name="airsim_node" pkg="airsim_ros_pkgs" type="airsim_node" output="screen">
+            <param name="host_ip" value="$(arg host)"/>
+            <param name="vehicle_name" value="Drone0"/>
+            <rosparam file="$(find airsim_ros_pkgs)/config/settings.yaml"/>
+        </node>
+        
+        <!-- SlideSLAM SLOAM for this drone -->
+        <include file="$(find sloam)/launch/decentralized_sloam.launch">
+            <arg name="hostRobot_ID" value="0"/>
+            <arg name="enable_rviz" value="false"/>
+            <arg name="odom_topic" value="/drone_0/odom_local_ned"/>
+        </include>
+        
+        <!-- Object detection and modeling -->
+        <include file="$(find object_modeller)/launch/rgb_segmentation_f250.launch" if="$(arg use_rgbd)">
+            <arg name="robot_name" value="drone_0"/>
+        </include>
+        
+        <!-- LiDAR processing -->
+        <include file="$(find scan2shape_launch)/launch/process_cloud_node_outdoor_with_ns.launch" if="$(arg use_lidar)">
+            <arg name="robot_name" value="drone_0"/>
+            <arg name="odom_topic" value="/drone_0/odom_local_ned"/>
+        </include>
+    </group>
+    
+    <group ns="drone_1">
+        <node name="airsim_node" pkg="airsim_ros_pkgs" type="airsim_node" output="screen">
+            <param name="host_ip" value="$(arg host)"/>
+            <param name="vehicle_name" value="Drone1"/>
+            <rosparam file="$(find airsim_ros_pkgs)/config/settings.yaml"/>
+        </node>
+        
+        <!-- SlideSLAM SLOAM for this drone -->
+        <include file="$(find sloam)/launch/decentralized_sloam.launch">
+            <arg name="hostRobot_ID" value="1"/>
+            <arg name="enable_rviz" value="false"/>
+            <arg name="odom_topic" value="/drone_1/odom_local_ned"/>
+        </include>
+        
+        <!-- Object detection and modeling -->
+        <include file="$(find object_modeller)/launch/rgb_segmentation_f250.launch" if="$(arg use_rgbd)">
+            <arg name="robot_name" value="drone_1"/>
+        </include>
+        
+        <!-- LiDAR processing -->
+        <include file="$(find scan2shape_launch)/launch/process_cloud_node_outdoor_with_ns.launch" if="$(arg use_lidar)">
+            <arg name="robot_name" value="drone_1"/>
+            <arg name="odom_topic" value="/drone_1/odom_local_ned"/>
+        </include>
+    </group>
+    
+    <group ns="drone_2">
+        <node name="airsim_node" pkg="airsim_ros_pkgs" type="airsim_node" output="screen">
+            <param name="host_ip" value="$(arg host)"/>
+            <param name="vehicle_name" value="Drone2"/>
+            <rosparam file="$(find airsim_ros_pkgs)/config/settings.yaml"/>
+        </node>
+        
+        <!-- SlideSLAM SLOAM for this drone -->
+        <include file="$(find sloam)/launch/decentralized_sloam.launch">
+            <arg name="hostRobot_ID" value="2"/>
+            <arg name="enable_rviz" value="false"/>
+            <arg name="odom_topic" value="/drone_2/odom_local_ned"/>
+        </include>
+        
+        <!-- Object detection and modeling -->
+        <include file="$(find object_modeller)/launch/rgb_segmentation_f250.launch" if="$(arg use_rgbd)">
+            <arg name="robot_name" value="drone_2"/>
+        </include>
+        
+        <!-- LiDAR processing -->
+        <include file="$(find scan2shape_launch)/launch/process_cloud_node_outdoor_with_ns.launch" if="$(arg use_lidar)">
+            <arg name="robot_name" value="drone_2"/>
+            <arg name="odom_topic" value="/drone_2/odom_local_ned"/>
+        </include>
+    </group>
+    
+    <group ns="drone_3">
+        <node name="airsim_node" pkg="airsim_ros_pkgs" type="airsim_node" output="screen">
+            <param name="host_ip" value="$(arg host)"/>
+            <param name="vehicle_name" value="Drone3"/>
+            <rosparam file="$(find airsim_ros_pkgs)/config/settings.yaml"/>
+        </node>
+        
+        <!-- SlideSLAM SLOAM for this drone -->
+        <include file="$(find sloam)/launch/decentralized_sloam.launch">
+            <arg name="hostRobot_ID" value="3"/>
+            <arg name="enable_rviz" value="false"/>
+            <arg name="odom_topic" value="/drone_3/odom_local_ned"/>
+        </include>
+        
+        <!-- Object detection and modeling -->
+        <include file="$(find object_modeller)/launch/rgb_segmentation_f250.launch" if="$(arg use_rgbd)">
+            <arg name="robot_name" value="drone_3"/>
+        </include>
+        
+        <!-- LiDAR processing -->
+        <include file="$(find scan2shape_launch)/launch/process_cloud_node_outdoor_with_ns.launch" if="$(arg use_lidar)">
+            <arg name="robot_name" value="drone_3"/>
+            <arg name="odom_topic" value="/drone_3/odom_local_ned"/>
+        </include>
+    </group>
+    
+    <group ns="drone_4">
+        <node name="airsim_node" pkg="airsim_ros_pkgs" type="airsim_node" output="screen">
+            <param name="host_ip" value="$(arg host)"/>
+            <param name="vehicle_name" value="Drone4"/>
+            <rosparam file="$(find airsim_ros_pkgs)/config/settings.yaml"/>
+        </node>
+        
+        <!-- SlideSLAM SLOAM for this drone -->
+        <include file="$(find sloam)/launch/decentralized_sloam.launch">
+            <arg name="hostRobot_ID" value="4"/>
+            <arg name="enable_rviz" value="false"/>
+            <arg name="odom_topic" value="/drone_4/odom_local_ned"/>
+        </include>
+        
+        <!-- Object detection and modeling -->
+        <include file="$(find object_modeller)/launch/rgb_segmentation_f250.launch" if="$(arg use_rgbd)">
+            <arg name="robot_name" value="drone_4"/>
+        </include>
+        
+        <!-- LiDAR processing -->
+        <include file="$(find scan2shape_launch)/launch/process_cloud_node_outdoor_with_ns.launch" if="$(arg use_lidar)">
+            <arg name="robot_name" value="drone_4"/>
+            <arg name="odom_topic" value="/drone_4/odom_local_ned"/>
+        </include>
+    </group>
+    
+    <group ns="drone_5">
+        <node name="airsim_node" pkg="airsim_ros_pkgs" type="airsim_node" output="screen">
+            <param name="host_ip" value="$(arg host)"/>
+            <param name="vehicle_name" value="Drone5"/>
+            <rosparam file="$(find airsim_ros_pkgs)/config/settings.yaml"/>
+        </node>
+        
+        <!-- SlideSLAM SLOAM for this drone -->
+        <include file="$(find sloam)/launch/decentralized_sloam.launch">
+            <arg name="hostRobot_ID" value="5"/>
+            <arg name="enable_rviz" value="false"/>
+            <arg name="odom_topic" value="/drone_5/odom_local_ned"/>
+        </include>
+        
+        <!-- Object detection and modeling -->
+        <include file="$(find object_modeller)/launch/rgb_segmentation_f250.launch" if="$(arg use_rgbd)">
+            <arg name="robot_name" value="drone_5"/>
+        </include>
+        
+        <!-- LiDAR processing -->
+        <include file="$(find scan2shape_launch)/launch/process_cloud_node_outdoor_with_ns.launch" if="$(arg use_lidar)">
+            <arg name="robot_name" value="drone_5"/>
+            <arg name="odom_topic" value="/drone_5/odom_local_ned"/>
+        </include>
+    </group>
+    
+    <!-- Multi-robot coordination and communication -->
+    <!-- Topic relaying handled by individual SLOAM nodes -->
+    
+    <!-- Visualization -->
+    <node name="rviz" pkg="rviz" type="rviz" 
+          args="-d /root/slideslam_ws/Source_Code/Resource-Aware-Coordination-AirSim/AirSim/ros/src/scan2shape/rviz/faster-lio-sloam.rviz"/>
+
+</launch>
